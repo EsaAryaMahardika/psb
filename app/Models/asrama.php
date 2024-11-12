@@ -10,4 +10,5 @@ class asrama extends Model
     use HasFactory;
     protected $table = 'asrama';
     protected $guarded = [];
+    public $timestamps = false;
 }

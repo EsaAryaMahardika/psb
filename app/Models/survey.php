@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class survey extends Model
 {
     use HasFactory;
-    protected $table = 'soal';
+    protected $table = 'survey';
     protected $guarded = [];
+    public $timestamps = false;
 }

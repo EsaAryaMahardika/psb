@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DBController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +15,30 @@ use App\Http\Controllers\DBController;
 |
 */
 
+// PENDAFTAR
 Route::get('/', [DBController::class, 'index'])->name('/');
-Route::get('/panitia', [DBController::class, 'panitia']);
+Route::post('/daftar', [DBController::class, 'daftar']);
 Route::post('/login', [DBController::class, 'login']);
-Route::get('/form-pendaftar', [DBController::class, 'form'])->middleware('auth:pendaftar');
+Route::middleware('auth:pendaftar')->group(function () {
+    Route::get('/form-pendaftar', [DBController::class, 'form']);
+    Route::post('/form-pendaftar', [DBController::class, 'form_complete']);
+    Route::get('/form-lengkap', [DBController::class, 'form_done']);
+    Route::get('/logout', [DBController::class, 'logout']);
+});
 
-// PANITIA
-// Route::get('/panitia', [DBController::class, 'panitia']);
+Route::middleware('auth:panitia')->group(function () {
+    // ADMIN
+    Route::post('/gelombang', [DBController::class, 'gelombang']);
+    // PANITIA
+    Route::get('/para-panitia', [DBController::class, 'login_panitia']);
+    Route::post('/para-panitia', [DBController::class, 'cek_panitia']);
+    Route::get('/panitia', [DBController::class, 'panitia']);
+    Route::get('/pendaftar/{nis}', [DBController::class, 'get_pendaftar']);
+    Route::put('/pendaftar/{nis}', [DBController::class, 'put_pendaftar']);
+    Route::delete('/pendaftar/{nis}', [DBController::class, 'delete_pendaftar']);
+});
 
-// Route::get('/pendaftar', [DBController::class, 'pendaftar'])->middleware('auth');
-// Route::put('/pendaftar/{id}', [DBController::class, 'u_pendaftar']);
-// Route::delete('/pendaftar/{id}', [DBController::class, 'd_pendaftar']);
-
-// Route::get('/hapus', [DBController::class, 'hapus'])->middleware('auth');
-// Route::delete('/hapus/{id}', [DBController::class, 'd_hapus']);
-
-// Route::get('/token', [DBController::class, 'token'])->middleware('auth');
-// Route::put('/token/{id}', [DBController::class, 'u_token']);
-// Route::put('/verify/{id}', [DBController::class, 'verify']);
-// Route::delete('/token/{id}', [DBController::class, 'd_token']);
-
-// PENGASUH
-// Route::get('/pengasuh', [DBController::class, 'pengasuh']);
-// Route::get('/detail', [DBController::class, 'detail']);
+// GET DATA WILAYAH
+Route::get('kab/{id}', [DBController::class, 'kab']);
+Route::get('kec/{id}', [DBController::class, 'kec']);
+Route::get('kel/{id}', [DBController::class, 'kel']);

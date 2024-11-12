@@ -378,3 +378,36 @@ body {
   border-radius: var(--bs-border-radius);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.success-alert {
+  background-color: #a8f0c6;
+  color: #000000;
+}
+.success-alert .close {
+  border-color: #178344;
+  color: #178344;
+}
+.danger-alert {
+  background-color: #f7a7a3;
+  color: #000000;
+}
+.danger-alert .close {
+  border-color: #8f130c;
+  color: #8f130c;
+}
+.alert {
+  width: fit-content;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.alert p{
+  margin: 0;
+}
+.close {
+  position: absolute;
+  right: 4px;
+  top: -1px;
+  cursor: pointer;
+  text-decoration: none;
+}

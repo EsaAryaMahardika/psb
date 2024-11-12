@@ -1,4 +1,6 @@
-<h3>Konfirmasi Data:</h3>
+<div class="text-center">
+    <h3><b>Pastikan data sudah benar sebelum dikonfirmasi</b></h3>
+</div>
 <div class="form-row table-responsive">
     <table class="table">
         <tbody>
@@ -145,6 +147,30 @@
             <tr class="space-row">
                 <th>Penghasilan Wali</th>
                 <td id="w_has-val"></td>
+            </tr>
+            <tr class="space-row">
+                <th>Nama Sekolah Asal</th>
+                <td id="s_asal-val"></td>
+            </tr>
+            <tr class="space-row">
+                <th>Alamat Sekolah Asal</th>
+                <td id="s_alamat-val"></td>
+            </tr>
+            <tr class="space-row">
+                <th>Provinsi Sekolah Asal</th>
+                <td id="s_prov-val"></td>
+            </tr>
+            <tr class="space-row">
+                <th>Kabupaten Sekolah Asal</th>
+                <td id="s_kab-val"></td>
+            </tr>
+            <tr class="space-row">
+                <th>Kecamatan Sekolah Asal</th>
+                <td id="s_kec-val"></td>
+            </tr>
+            <tr class="space-row">
+                <th>Tahun Lulus</th>
+                <td id="lulus-val"></td>
             </tr>
         </tbody>
     </table>

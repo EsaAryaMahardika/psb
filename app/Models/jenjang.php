@@ -10,4 +10,5 @@ class jenjang extends Model
     use HasFactory;
     protected $table = 'jenjang';
     protected $guarded = [];
+    public $timestamps = false;
 }

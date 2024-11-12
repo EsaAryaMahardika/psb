@@ -10,4 +10,5 @@ class hapus extends Model
     use HasFactory;
     protected $table = 'hapus';
     protected $guarded = [];
+    public $timestamps = false;
 }

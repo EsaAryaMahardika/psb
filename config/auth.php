@@ -70,7 +70,7 @@ return [
         ],
         'pendaftars' => [
             'driver' => 'eloquent',
-            'model' => App\Models\pendaftar::class,
+            'model' => App\Models\token::class,
         ],
 
         // 'users' => [

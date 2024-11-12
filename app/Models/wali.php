@@ -9,40 +9,61 @@ class wali extends Model
 {
     use HasFactory;
     protected $table = 'wali';
-    protected $guarded = [];
+    protected $fillable = [
+        'nis',
+        'ayah',
+        'a_nik',
+        'a_tl',
+        'a_pend',
+        'a_telp',
+        'a_ker',
+        'a_has',
+        'ibu',
+        'i_nik',
+        'i_tl',
+        'i_pend',
+        'i_telp',
+        'i_ker',
+        'i_has',
+        'wali',
+        'w_telp',
+        'w_ker',
+        'w_has'
+    ];
+    public $timestamps = false;
     public function nis()
     {
         return $this->belongsTo(pendaftar::class, 'nis', 'nis');
     }
-    public function a_pend()
+    public function pend_ayah()
     {
         return $this->belongsTo(pendidikan::class, 'a_pend', 'id');
     }
-    public function a_ker()
+    public function ker_ayah()
     {
         return $this->belongsTo(pekerjaan::class, 'a_ker', 'id');
     }
-    public function a_has()
+    public function has_ayah()
     {
         return $this->belongsTo(penghasilan::class, 'a_has', 'id');
     }
-    public function i_pend()
+    public function pend_ibu()
     {
         return $this->belongsTo(pendidikan::class, 'i_pend', 'id');
     }
-    public function i_ker()
+    public function ker_ibu()
     {
         return $this->belongsTo(pekerjaan::class, 'i_ker', 'id');
     }
-    public function i_has()
+    public function has_ibu()
     {
         return $this->belongsTo(penghasilan::class, 'i_has', 'id');
     }
-    public function w_ker()
+    public function ker_wali()
     {
         return $this->belongsTo(pekerjaan::class, 'w_ker', 'id');
     }
-    public function w_has()
+    public function has_wali()
     {
         return $this->belongsTo(penghasilan::class, 'w_has', 'id');
     }

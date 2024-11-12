@@ -2,7 +2,10 @@
     <div class="form-holder form-holder-2">
         <label>Pilih Asrama</label>
         <select name="asr_id" class="form-control" id="asrama">
-            <option value=""></option>
+            <option disabled selected>Silahkan dipilih</option>
+            @foreach ($asrama as $item)
+            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+            @endforeach
         </select>
         <span class="select-btn">
             <i class="zmdi zmdi-chevron-down"></i>
@@ -59,7 +62,6 @@
     <div class="form-holder form-holder-2">
         <label>Jenis Kelamin</label>
         <select name="kelamin" class="form-control" id="kelamin">
-            <option selected disabled>Silahkan dipilih</option>
             <option value="L">Laki - laki</option>
             <option value="P">Perempuan</option>
         </select>
@@ -77,8 +79,10 @@
 <div class="form-row">
     <div class="form-holder form-holder-2">
         <label>Provinsi</label>
-        <select name="prov_id" class="form-control" id="prov">
-            <option value=""></option>
+        <select name="prov_id" class="form-control prov" id="prov">
+            @foreach ($prov as $item)
+            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+            @endforeach
         </select>
         <span class="select-btn">
             <i class="zmdi zmdi-chevron-down"></i>
@@ -88,7 +92,7 @@
 <div class="form-row">
     <div class="form-holder form-holder-2">
         <label>Kabupaten/Kota</label>
-        <select name="kab_id" class="form-control" id="kab">
+        <select name="kab_id" class="form-control kab" id="kab">
             <option value=""></option>
         </select>
         <span class="select-btn">
@@ -99,7 +103,7 @@
 <div class="form-row">
     <div class="form-holder form-holder-2">
         <label>Kecamatan</label>
-        <select name="kec_id" class="form-control" id="kec">
+        <select name="kec_id" class="form-control kec" id="kec">
             <option value=""></option>
         </select>
         <span class="select-btn">
@@ -110,7 +114,7 @@
 <div class="form-row">
     <div class="form-holder form-holder-2">
         <label>Desa/Kelurahan</label>
-        <select name="des_id" class="form-control" id="des">
+        <select name="kel_id" class="form-control des" id="des">
             <option value=""></option>
         </select>
         <span class="select-btn">

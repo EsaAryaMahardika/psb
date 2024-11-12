@@ -10,4 +10,5 @@ class soal extends Model
     use HasFactory;
     protected $table = 'soal';
     protected $guarded = [];
+    public $timestamps = false;
 }

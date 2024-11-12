@@ -11,6 +11,23 @@
   </head>
   <body>
     <div class="row d-flex justify-content-center align-items-center container">
+      @if(Session::has('success'))
+      <div class="alert success-alert">
+        <p>{{ Session::get('success') }}</p>
+        <a class="close">&times;</a>
+      </div>
+      @elseif(Session::has('error-message'))
+      <div class="alert danger-alert">
+        <p>{{ Session::get('error-message') }}</p>
+        <a class="close">&times;</a>
+      </div>
+      @endif
+      @error('id')
+      <div class="alert danger-alert">
+        <p>{{ $message }}</p>
+        <a class="close">&times;</a>
+      </div>
+      @enderror
       <h1 class="text-center mb-4 fw-bold">Selamat Datang di Pendaftaran Santri An-Nur II!</h1>
       <span class="text-center mb-4">Silahkan mendaftarkan diri dengan mengisi data di bawah ini. Jika sudah silahkan tunggu pesan dari kami melalui WhatsApp untuk masuk mengisi kelengkapan data.</span>
       <div class="card">
@@ -24,38 +41,39 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <form action="#" class="row scroll form px-4 text-center">
-              <select name="pondok" class="custom-select" required="required">
+            <form class="row scroll form px-4 text-center" action="/daftar" method="POST">
+              @csrf
+              <select name="survey" class="custom-select" required="required" id="survey">
                 <option value="" disabled selected>
                   Kenal An-Nur II dari mana?
                 </option>
-                {{-- @foreach ($survey as $item)
+                @foreach ($survey as $item)
                     <option value="{{ $item->id }}">{{ $item->keterangan }}</option>
-                @endforeach --}}
+                @endforeach
               </select>
-              <input type="name" placeholder="Nama" class="form-control" />
-              <input type="number" placeholder="Nomor Induk Keluarga" class="number form-control"/>
-              <select name="gender" class="custom-select" required="required">
+              <input type="text" name="nama" placeholder="Nama" class="form-control" id="nama" value="{{ old('nama') }}" />
+              <input type="number" name="id" placeholder="Nomor Induk Keluarga" class="number form-control" id="id" value="{{ old('id') }}"/>
+              <select name="gender" class="custom-select" required="required" id="gender">
                 <option value="" disabled selected>Jenis Kelamin</option>
                 <option value="L">Laki - Laki</option>
                 <option value="P">Perempuan</option>
               </select>
-              <input type="number" placeholder="Nomor WhatsApp" class="number form-control" />
-              <select name="jenjang" class="custom-select" required="required">
-                <option value="" disabled selected>Jenjang berikutnya</option>
-                {{-- @foreach ($jenjang as $item)
+              <input type="number" name="wa" placeholder="Nomor WhatsApp" class="number form-control" id="wa" value="{{ old('wa') }}"/>
+              <select name="jenjang" class="custom-select" required="required" id="jenjang">
+                <option value="" disabled selected>Jenjang yang akan ditempuh</option>
+                @foreach ($jenjang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                @endforeach --}}
+                @endforeach
               </select>
-              <button class="btn btn-dark btn-block" id="submit">Daftar</button>
+              <button class="btn btn-dark btn-block" type="submit">Daftar</button>
             </form>
           </div>
           <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <form class="form px-4 text-center" action="/login" method="POST">
               @csrf
-              <input type="text" name="nik" class="form-control number" placeholder="NIK"/>
-              <input type="text" name="token" class="form-control number" placeholder="Token"/>
-              <button class="btn btn-dark btn-block" id="signin">Masuk</button>
+              <input type="text" name="id" class="form-control number" placeholder="NIK"/>
+              <input type="text" name="password" class="form-control number" placeholder="Token"/>
+              <button class="btn btn-dark btn-block" type="submit">Masuk</button>
             </form>
           </div>
         </div>

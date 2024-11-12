@@ -6,6 +6,7 @@
     <title>PSB An-Nur II</title>
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Font-->
     <link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
     <link rel="stylesheet" type="text/css"
@@ -31,7 +32,8 @@
                     <div class="wizard-header">
                         <h3>PSB An-Nur II</h3>
                     </div>
-                    <form class="form-register" action="#" method="post">
+                    <form class="form-register" id="pendaftar">
+                        @csrf
                         <div id="form-total">
                             <!-- Biodata -->
                             <h2>1</h2>
@@ -79,6 +81,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="js/jquery.steps.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        var kelamin = {{ $kelamin }};
+        $(document).ready(function() {
+            $("#kelamin").val(kelamin);
+        });
+    </script>
 </body>
 
 </html>

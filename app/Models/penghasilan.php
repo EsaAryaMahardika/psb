@@ -10,4 +10,5 @@ class penghasilan extends Model
     use HasFactory;
     protected $table = 'penghasilan';
     protected $guarded = [];
+    public $timestamps = false;
 }

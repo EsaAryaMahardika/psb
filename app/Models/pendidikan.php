@@ -10,4 +10,5 @@ class pendidikan extends Model
     use HasFactory;
     protected $table = 'pendidikan';
     protected $guarded = [];
+    public $timestamps = false;
 }

@@ -8,19 +8,21 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($soal as $item)    
         <tr class="text-center">
-            <th scope="row">1</th>
-            <td>Berprestasi di sekolah (Ranking 3 besar)</td>
+            <th scope="row">{{ $item->id }}</th>
+            <td>{{ $item->soal }}</td>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="soal1" value="YA" required="required">
+                    <input class="form-check-input" type="radio" name="soal{{ $item->id }}" value="YA" required>
                 </div>
             </td>
             <td>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="soal1" id="soal1" value="TIDAK" required="required">
+                    <input class="form-check-input" type="radio" name="soal{{ $item->id }}" value="TIDAK" required>
                 </div>
             </td>
         </tr> 
+        @endforeach
     </tbody>
 </table>
