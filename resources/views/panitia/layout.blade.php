@@ -9,10 +9,10 @@
     <title>Panitia Putra - PSB An-Nur II</title>
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link rel="stylesheet" href="vendor/animate-css/vivify.min.css">
-    <link rel="stylesheet" href="css/site.min.css">
+    <link rel="stylesheet" href="/vendor/animate-css/vivify.min.css">
+    <link rel="stylesheet" href="/css/site.min.css">
 </head>
 
 <body class="theme-light font-montserrat light_version">
@@ -28,7 +28,7 @@
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav">
                         <li><a class="icon-menu" id="mode"><i class="fa fa-2x fa-sun" id="icon"></i></a></li>
-                        <li><a href="" class="icon-menu"><i class="fa fa-2x fa-power-off"></i></a></li>
+                        <li><a href="/logout-panitia" class="icon-menu"><i class="fa fa-2x fa-power-off"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -42,11 +42,11 @@
         <div class="sidebar-scroll">
             <div class="user-account">
                 <div class="user_div">
-                    <img src="images/user.png" class="user-photo" alt="User Profile Picture">
+                    <img src="/images/user.png" class="user-photo" alt="User Profile Picture">
                 </div>
                 <div class="dropdown">
                     <span>Selamat Datang</span>
-                    <div class="user-name"><strong>Admin Pondok Putra</strong></div>
+                    <div class="user-name"><strong>Panitia <span class="text-uppercase">{{ $panitia }}</span></strong></div>
                 </div>
             </div>  
             <nav id="left-sidebar-nav" class="sidebar-nav">
@@ -58,15 +58,26 @@
         </div>
     </div>
     <div id="main-content">
+        @if(Session::has('success'))
+        <div class="alert success-alert">
+            <p>{{ Session::get('success') }}</p>
+            <a class="close">&times;</a>
+        </div>
+        @elseif(Session::has('error-message'))
+        <div class="alert danger-alert">
+            <p>{{ Session::get('error-message') }}</p>
+            <a class="close">&times;</a>
+        </div>
+        @endif
         <div class="container-fluid">
             @yield('content')
         </div>
     </div>
 </div>
-<script src="js/libscripts.bundle.js"></script>    
-<script src="js/vendorscripts.bundle.js"></script>    
-<script src="js/mainscripts.bundle.js"></script>
-<script src="js/script.js"></script>
+<script src="/js/libscripts.bundle.js"></script>    
+<script src="/js/vendorscripts.bundle.js"></script>    
+<script src="/js/mainscripts.bundle.js"></script>
+<script src="/js/script.js"></script>
 @yield('script')
 </body>
 </html>

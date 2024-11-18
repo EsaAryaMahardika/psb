@@ -148,6 +148,7 @@
                 <th>Penghasilan Wali</th>
                 <td id="w_has-val"></td>
             </tr>
+            @if ($jenjang != 1)    
             <tr class="space-row">
                 <th>Nama Sekolah Asal</th>
                 <td id="s_asal-val"></td>
@@ -172,6 +173,7 @@
                 <th>Tahun Lulus</th>
                 <td id="lulus-val"></td>
             </tr>
+            @endif
         </tbody>
     </table>
 </div>

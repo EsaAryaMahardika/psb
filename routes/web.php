@@ -26,16 +26,18 @@ Route::middleware('auth:pendaftar')->group(function () {
     Route::get('/logout', [DBController::class, 'logout']);
 });
 
+// PANITIA
+Route::get('/para-panitia', [DBController::class, 'login_panitia']);
+Route::post('/para-panitia', [DBController::class, 'cek_panitia']);
 Route::middleware('auth:panitia')->group(function () {
-    // ADMIN
-    Route::post('/gelombang', [DBController::class, 'gelombang']);
-    // PANITIA
-    Route::get('/para-panitia', [DBController::class, 'login_panitia']);
-    Route::post('/para-panitia', [DBController::class, 'cek_panitia']);
     Route::get('/panitia', [DBController::class, 'panitia']);
     Route::get('/pendaftar/{nis}', [DBController::class, 'get_pendaftar']);
+    Route::get('/send/{nis}', [DBController::class, 'send_message']);
+    Route::get('/hapus/{nis}', [DBController::class, 'before_delete']);
     Route::put('/pendaftar/{nis}', [DBController::class, 'put_pendaftar']);
     Route::delete('/pendaftar/{nis}', [DBController::class, 'delete_pendaftar']);
+    Route::post('/gelombang', [DBController::class, 'gelombang']);
+    Route::get('/logout-panitia', [DBController::class, 'logout_panitia']);
 });
 
 // GET DATA WILAYAH

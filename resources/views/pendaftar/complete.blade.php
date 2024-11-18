@@ -25,6 +25,7 @@
         <div id="content">
             <div class="text-center">
                 <h3>Data Pendaftar PSB An-Nur II</h3>
+                <p>Tanggal daftar: {{ date('d-m-Y', strtotime($pendaftar->data->tanggal)) }}</p>
             </div>
             <table class="table">
             <tbody>
@@ -239,11 +240,12 @@
                 <tr class="space-row">
                     <th>Penghasilan Wali</th>
                     @if ($pendaftar->wali->w_has != NULL)
-                    <td>{{ $pendaftar->wali->has_wali->nama }}</td>
+                    <td>{{ $pendaftar->wali->has_wali->keterangan }}</td>
                     @else
                     <td>-</td>
                     @endif
                 </tr>
+                @if ($jenjang != 1)    
                 <tr class="space-row">
                     <th>Nama Sekolah Asal</th>
                     <td>{{ $pendaftar->data->s_nama }}</td>
@@ -268,6 +270,7 @@
                     <th>Tahun Lulus</th>
                     <td>{{ $pendaftar->data->lulus }}</td>
                 </tr>
+                @endif
             </tbody>
         </table>
         </div>

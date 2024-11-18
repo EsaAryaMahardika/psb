@@ -97,10 +97,10 @@ $(document).ready(function () {
         $(this).parent(".alert").fadeOut();
     });
 }),
-    // Pindah halaman signin ke signup dan sebaliknya
-    $('a[href="#"]').on("click", function (e) {
-        e.preventDefault();
-    });
+// Pindah halaman signin ke signup dan sebaliknya
+$('a[href="#"]').on("click", function (e) {
+    e.preventDefault();
+});
 
 // Dark Mode
 const $htmlElement = $("html");

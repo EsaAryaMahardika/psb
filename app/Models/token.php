@@ -21,7 +21,8 @@ class token extends Model
         'jenjang_id',
         'survey_id',
         'password',
-        'token'
+        'token',
+        'bukti'
     ];
     public $timestamps = false;
     public function data()

@@ -49,22 +49,32 @@
                                     @include('pendaftar/wali')
                                 </div>
                             </section>
-                            <!-- Pendidikan -->
-                            <h2>3</h2>
-                            <section>
-                                <div class="inner">
-                                    @include('pendaftar/pendidikan')
-                                </div>
-                            </section>
+                            @if ($jenjang != 1)
+                                <!-- Pendidikan -->
+                                <h2>3</h2>
+                                <section>
+                                    <div class="inner">
+                                        @include('pendaftar/pendidikan')
+                                    </div>
+                                </section>
+                            @endif
                             <!-- Track Record -->
+                            @if ($jenjang != 1)
                             <h2>4</h2>
+                            @else
+                            <h2>3</h2>
+                            @endif
                             <section>
                                 <div class="inner">
                                     @include('pendaftar/trackrecord')
                                 </div>
                             </section>
                             <!-- Konfirmasi -->
+                            @if ($jenjang != 1)
                             <h2>5</h2>
+                            @else
+                            <h2>4</h2>
+                            @endif
                             <section>
                                 <div class="inner">
                                     @include('pendaftar/konfirmasi')

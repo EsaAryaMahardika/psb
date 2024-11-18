@@ -7,12 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="" type="image/x-icon">
     <title>Admin - PSB An-Nur II</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link rel="stylesheet" href="vendor/animate-css/vivify.min.css">
-    <link rel="stylesheet" href="css/site.min.css">
+    <link rel="stylesheet" href="/vendor/animate-css/vivify.min.css">
+    <link rel="stylesheet" href="/css/site.min.css">
 </head>
 
 <body class="theme-light font-montserrat light_version">
@@ -100,11 +98,79 @@
                 </div>
             </div>
         </div>
+        <div class="text-center" id="message">
+            @if(Session::has('success'))
+            <div class="alert success-alert">
+                <p>{{ Session::get('success') }}</p>
+                <a class="close">&times;</a>
+            </div>
+            @elseif(Session::has('error-message'))
+            <div class="alert danger-alert">
+                <p>{{ Session::get('error-message') }}</p>
+                <a class="close">&times;</a>
+            </div>
+            @endif
+            <hr>
+            <h2>Peserta PSB</h2>
+        </div>
+        <div class="body mt-5">
+            <div class="table-responsive">
+                <table class="table table-hover js-basic dataTable table-custom spacing5">
+                    <thead>
+                        <tr>
+                            <th>NIS</th>
+                            <th>Nama</th>
+                            <th>Kirim Token</th>
+                            <th>Tanggal Daftar</th>
+                            <th>Cek Bukti TF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($pendaftar as $item)    
+                        <tr>
+                            <td>{{ $item->nis }}</td>
+                            <td>{{ $item->nama }}</td>
+                            @if ($item->isSend == 1)
+                                <td><i class="fa fa-check"></i> Sudah terkirim</td>
+                            @else
+                                <td><a href="send/{{ $item->nis }}" class="btn btn-success">Kirim</a></td>
+                            @endif
+                            <td>{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
+                            <td> 
+                                <button class="btn btn-info" data-toggle="modal" data-target="#cek" data-bukti="{{ $item->bukti }}">Bukti TF</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-<script src="js/libscripts.bundle.js"></script>    
-<script src="js/vendorscripts.bundle.js"></script>    
-<script src="js/mainscripts.bundle.js"></script>
+<div class="modal fade" id="cek" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bukti Transfer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="cekBukti" src="" class="img-fluid" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/libscripts.bundle.js"></script>    
+<script src="/js/vendorscripts.bundle.js"></script>    
+<script src="/js/mainscripts.bundle.js"></script>
+<script src="js/datatablescripts.bundle.js"></script>
+<script src="/js/script.js"></script>
 <script>
     $(document).ready(function() {
         $('#gelombang').on('change', function() {
@@ -125,7 +191,12 @@
                 }
             });
         });
+        $('#cek').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imageSrc = button.data('bukti');
+            $('#cekBukti').attr('src', "/tf/" + imageSrc);
+        });
     });
-</script>    
+</script> 
 </body>
 </html>

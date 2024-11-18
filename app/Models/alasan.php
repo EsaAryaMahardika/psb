@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class hapus extends Model
+class alasan extends Model
 {
     use HasFactory;
-    protected $table = 'hapus';
+    protected $table = 'alasan';
     protected $guarded = [];
     public $timestamps = false;
-    public function alasan()
-    {
-        return $this->belongsTo(alasan::class, 'alas_id', 'id');
-    }
 }

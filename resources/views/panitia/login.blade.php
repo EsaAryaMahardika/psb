@@ -11,15 +11,21 @@
   </head>
   <body>
     <div class="row d-flex justify-content-center align-items-center container">
+      @if(Session::has('error-message'))
+      <div class="alert danger-alert">
+        <p>{{ Session::get('error-message') }}</p>
+        <a class="close">&times;</a>
+      </div>
+      @endif
       <h1 class="text-center mb-4 fw-bold">Panitia PSB An-Nur II</h1>
       <div class="card">
         <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <form class="form px-4 text-center" action="/signin-panitia" method="POST">
+            <form class="form px-4 text-center" action="/para-panitia" method="POST">
               @csrf
-              <input type="text" name="username" class="form-control" placeholder="Username"/>
+              <input type="text" name="id" class="form-control" placeholder="Username"/>
               <input type="text" name="password" class="form-control" placeholder="Password"/>
-              <button class="btn btn-dark btn-block" id="signin">Masuk</button>
+              <button class="btn btn-dark btn-block" type="submit">Masuk</button>
             </form>
           </div>
         </div>

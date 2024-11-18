@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'pendaftars',
         ],
+        'panitia' => [
+            'driver' => 'session',
+            'provider' => 'panitias',
+        ],
     ],
 
     /*
@@ -71,6 +75,10 @@ return [
         'pendaftars' => [
             'driver' => 'eloquent',
             'model' => App\Models\token::class,
+        ],
+        'panitias' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
