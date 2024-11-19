@@ -26,7 +26,7 @@
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav">
                         <li><a class="icon-menu" id="mode"><i class="fa fa-2x fa-sun" id="icon"></i></a></li>
-                        <li><a href="" class="icon-menu"><i class="fa fa-2x fa-power-off"></i></a></li>
+                        <li><a href="/logout-panitia" class="icon-menu"><i class="fa fa-2x fa-power-off"></i></a></li>
                     </ul>
                 </div>
             </div>

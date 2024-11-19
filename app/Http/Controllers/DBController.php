@@ -70,9 +70,9 @@ class DBController extends Controller
         $token = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
         $password = Hash::make($token);
         //Bukti Transfer
-        $imageName = $request->file('bukti')->getClientOriginalName();
-        $path = $request->file('bukti')->move(public_path('tf'), $imageName);
-        $bukti = pathinfo($path, PATHINFO_BASENAME);
+        $imageName = time() . '_' . $request->file('bukti')->getClientOriginalName();
+        $request->file('bukti')->storeAs('public/tf', $imageName);
+        $bukti = pathinfo($imageName, PATHINFO_BASENAME);
         Token::create([
             'nis'       => $nis,
             'nama'      => $request->nama,
