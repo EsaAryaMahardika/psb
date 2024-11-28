@@ -225,13 +225,13 @@ class DBController extends Controller
                 })->get();
                 return view('panitia.index', compact('pendaftar','panitia', 'alasan'));
             case 'mi':
-                $pendaftar = token::where('jenjang_id', 1)->get();
+                $pendaftar = token::where('jenjang_id', 1)->with('data')->get();
                 return view('panitia.index', compact('pendaftar','panitia', 'alasan'));
             case 'smp':
-                $pendaftar = token::where('jenjang_id', 2)->get();
+                $pendaftar = token::where('jenjang_id', 2)->with('data')->get();
                 return view('panitia.index', compact('pendaftar','panitia', 'alasan'));
             case 'sma':
-                $pendaftar = token::where('jenjang_id', 3)->get();
+                $pendaftar = token::where('jenjang_id', 3)->with('data')->get();
                 return view('panitia.index', compact('pendaftar','panitia', 'alasan'));
             case 'tahfidz putra':
                 $pendaftar = token::whereHas('data', function ($query) {

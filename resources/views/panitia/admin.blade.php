@@ -137,7 +137,7 @@
                             @endif
                             <td>{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
                             <td> 
-                                <button class="btn btn-info" data-toggle="modal" data-target="#cek" data-bukti="{{ $item->bukti }}">Bukti TF</button>
+                                <button class="btn btn-info" data-toggle="modal" data-target="#cek" data-bukti="{{ asset('storage/tf/'.$item->bukti) }}">Bukti TF</button>
                             </td>
                         </tr>
                         @endforeach
@@ -194,7 +194,7 @@
         $('#cek').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var imageSrc = button.data('bukti');
-            $('#cekBukti').attr('src', "/tf/" + imageSrc);
+            $('#cekBukti').attr('src', imageSrc);
         });
     });
 </script> 
